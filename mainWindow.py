@@ -2,9 +2,9 @@ import tkinter as tk
 import speech_recognition as sr
 import webbrowser
 from ytmusicapi import YTMusic
-from urllib.parse import quote
 from PIL import Image, ImageTk, ImageDraw
 from tuya_control import turn_on_light, turn_off_light, set_light_color
+from time_functions import get_current_time, get_current_date, start_timer_from_text, stop_timer
 
 
 root = tk.Tk()
@@ -122,6 +122,21 @@ def listen_to_voice():
                 else:
                     print("No song specified")
                     label.config(text="Please specify a song name")
+
+             # Handling time and date requests
+            if "what time is it" in text:
+                current_time = get_current_time()
+                print(f"Current time: {current_time}")
+
+            elif "what date today" in text:
+                current_date = get_current_date()
+                print(f"Current date: {current_date}")
+
+            elif "start timer on" in text:
+                start_timer_from_text(text)
+
+            elif "stop timer" in text:
+                stop_timer()
 
     except sr.UnknownValueError:
         print("Could not understand the audio")
