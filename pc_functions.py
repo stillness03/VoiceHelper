@@ -6,7 +6,7 @@ import os
 
 def run_malwarebytes_cleanup():
     """Running a scan through Malwarebytes"""
-    malwarebytes_path = r"C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
+    malwarebytes_path = r"-"
     subprocess.Popen(malwarebytes_path)
     time.sleep(4)
 
